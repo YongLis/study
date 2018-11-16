@@ -1,0 +1,197 @@
+package com.sh.guessgame.utils.common;
+
+public class ConstantType {
+	public static enum ResultType {
+		SYSTEM_SUCCESS("10000", "交易成功", "交易成功"),
+		SYSTEM_BUSY("10001", "系统繁忙，请稍后再试", "系统繁忙，请稍后再试"),
+		SIGN_TYPE_NOT_MD5("10002", "签名方式不允许为空且必须是MD5", "签名方式不允许为空且必须是MD5"),
+		CHANNEL_ID_IS_NULL("10003", "渠道id不允许为空", "渠道id不允许为空"),
+		UUID_IS_NULL("10004", "请求报文编号不允许为空", "请求报文编号不允许为空"),
+		QUERYtIME_IS_NULL("10005", "请求时间不允许为空", "请求时间不允许为空"),
+		ID_CARD_IS_NULL("10006", "身份证号不允许为空", "身份证号不允许为空"),
+		BANK_CARD_IS_NULL("10007", "银行卡号不允许为空", "银行卡号不允许为空"),
+		MOBILE_IS_NULL("10008", "手机号不允许为空", "手机号不允许为空"),
+		SIGN_NOT_PASS("10009", "签名未通过", "签名未通过"),
+		REAL_NAME_IS_NULL("10010", "姓名不允许为空", "姓名不允许为空"),
+		// 格式校验
+		REAL_NAME_NOT_IEGAL("10011", "姓名最大长度不允许超过20位", "姓名最大长度不允许超过20位"),
+		IDCARD_NOT_LEGAL("10012", "身份证号不合规", "身份证号不合规"),
+		BANK_CARD_NOT_LEGAL("10013", "银行卡号不符合规则", "银行卡号不符合规则"),
+		MOBILE_NOT_LEGAL("10014", "手机号验证失败，请重新输入", "手机号验证失败，请重新输入"),
+		SIGN_NOT_NULL("10015", "签名不允许为空", "签名不允许为空"),
+		UUID_NOT_LEGAL("10020", "报文编号最大长度不允许超过20位", "报文编号最大长度不允许超过20位"),
+		QUERY_TIME_NOT_LEGAL("10021", "查询时间最大长度不允许超过14位", "查询时间最大长度不允许超过14位"),
+		CHANNEL_IS_NOT_SIGNATORY("10022","渠道未签约，请联系客服","渠道未签约，请联系客服"),
+		
+		REQUEST_REPEAT("10030","重复请求","重复请求"),
+		OTHER_REASON("99999", "其他原因", "其他原因")
+		;
+	    
+		private String retCode;		// 返回码
+		private String retMsg;		// 系统消息
+		private String showMsg;		// 用户展示消息
+		ResultType(String retCode, String retMsg, String showMsg) {
+			this.retCode = retCode;
+			this.retMsg = retMsg;
+			this.showMsg = showMsg;
+		}
+		public String getRetCode() {
+			return retCode;
+		}
+		public void setRetCode(String retCode) {
+			this.retCode = retCode;
+		}
+		public String getRetMsg() {
+			return retMsg;
+		}
+		public void setRetMsg(String retMsg) {
+			this.retMsg = retMsg;
+		}
+		public String getShowMsg() {
+			return showMsg;
+		}
+		public void setShowMsg(String showMsg) {
+			this.showMsg = showMsg;
+		}
+	}
+	
+	/**
+     * 分类类型
+     */
+    public static enum IpAddressType {
+        INNER("inner","内网"),
+        OUTSITE("outsite","外网"),
+        LOCAL("local","本机");
+        
+        String code;
+        String name;
+        private IpAddressType(String code, String name) {
+            this.code = code;
+            this.name = name;
+        }
+        public String getCode() {
+            return code;
+        }
+        public String getName() {
+            return name;
+        }
+    }
+    
+    /**
+     * 短信模板类型 
+     */
+    public static enum SmsType{
+        REGISTER_LOGIN("register_login","登录或注册"),
+        FORGET_TRADE_PASSWORD("forget_trade_password","忘记交易密码"),
+        BINDING_BANKCARD("binding_bankcard","绑定银行卡"),
+        UNBINDING_BANKCARD("unbinding_bankcard","解绑银行卡");
+        
+        String code;
+        String name;
+        private SmsType(String code, String name) {
+            this.code = code;
+            this.name = name;
+        }
+        public String getCode() {
+            return code;
+        }
+        public void setCode(String code) {
+            this.code = code;
+        }
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+        
+    }
+    
+    /**
+     * 账户类型 
+     */
+    public static enum EaccountType{
+        CASH("cash","现金账户"),
+        REDPACKET("redpacket","红包账户");
+        
+        String code;
+        String name;
+        private EaccountType(String code, String name) {
+            this.code = code;
+            this.name = name;
+        }
+        public String getCode() {
+            return code;
+        }
+        public void setCode(String code) {
+            this.code = code;
+        }
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+        
+    }
+    
+    /**
+     * 交易状态
+     */
+    public static enum TradeStatus{
+        TRADE_CLOSED("trade_closed","交易关闭"),
+        PENDING("pending","待处理"),
+        PROCESSING("processing","处理中"),
+        TRADE_SUCCESS("trade_success","交易成功"),
+        TRADE_FAILED("trade_failed","交易失败 ");
+        
+        String code;
+        String name;
+        private TradeStatus(String code, String name) {
+            this.code = code;
+            this.name = name;
+        }
+        public String getCode() {
+            return code;
+        }
+        public void setCode(String code) {
+            this.code = code;
+        }
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+    
+    /**
+     * 交易类型
+     */
+    public static enum TradeType{
+        PAY("pay","支付"),
+        REFUND("refund","退款"),
+        CHARGE("charge","充值"),
+        WITHDRAW("withdraw","提现");
+        
+        String code;
+        String name;
+        private TradeType(String code, String name) {
+            this.code = code;
+            this.name = name;
+        }
+        public String getCode() {
+            return code;
+        }
+        public void setCode(String code) {
+            this.code = code;
+        }
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+    
+}

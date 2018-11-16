@@ -1,0 +1,40 @@
+package com.sh.guessgame.utils.common;
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class MD5 {
+	private static final Logger logger = LoggerFactory.getLogger(MD5.class);
+
+	public static String compute(String inStr) {
+		if (inStr.equals("")) {
+			return "";
+		}
+
+		try {
+			byte[] byteArray = inStr.getBytes("UTF-8");
+
+			byte[] md5Bytes = MessageDigest.getInstance("MD5").digest(byteArray);
+
+			StringBuffer hexValue = new StringBuffer();
+
+			for (int i = 0; i < md5Bytes.length; i++) {
+				int val = md5Bytes[i] & 0xFF;
+				if (val < 16)
+					hexValue.append("0");
+				hexValue.append(Integer.toHexString(val));
+			}
+
+			return hexValue.toString();
+		} catch (NoSuchAlgorithmException e) {
+			logger.error(e.getMessage());
+		} catch (UnsupportedEncodingException e) {
+			logger.error(e.getMessage());
+		}
+		return "";
+	}
+}

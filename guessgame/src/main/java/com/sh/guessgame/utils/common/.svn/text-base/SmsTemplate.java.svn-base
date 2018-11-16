@@ -1,0 +1,42 @@
+package com.aemoney.app.common.utils;
+
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
+
+import org.apache.commons.collections.MapUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Created by daqian on 2017/4/10.
+ */
+public class SmsTemplate {
+    private static Logger logger = LoggerFactory.getLogger(SmsTemplate.class);
+    private static Map<String, String> configMap = new HashMap();
+
+    static {
+        ResourceBundle bundle = ResourceBundle.getBundle("SmsTemplate");
+        if (bundle != null) {
+            for (String key : bundle.keySet()) {
+                try {
+                    configMap.put(key, new String(bundle.getString(key).getBytes("ISO-8859-1"),"utf-8"));
+                } catch (UnsupportedEncodingException e) {
+                    logger.error("加载短信模板文件失败",e);
+                }
+            }
+        }
+    }
+
+    public static String getStringValue(String key) {
+//        Map<String, String> map = getMapValue(key);
+        if (MapUtils.isNotEmpty(configMap)) {
+            String value = configMap.get(key.trim());
+            return value != null ? value : null;
+        }
+        return null;
+    }
+
+
+}

@@ -1,0 +1,76 @@
+-- 导出  表 testdb.batch_info 结构
+CREATE TABLE IF NOT EXISTS `batch_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `batch_no` varchar(100) NOT NULL COMMENT '批次号',
+  `price` varchar(32) NOT NULL COMMENT '单注金额',
+  `max_num` int(11) NOT NULL COMMENT '最大注数',
+  `total_amt` varchar(32) NOT NULL COMMENT '汇总金额',
+  `random_num` varchar(20) DEFAULT NULL COMMENT '随机数字',
+  `user_no` bigint(20) DEFAULT NULL COMMENT '用户编号',
+  `batch_type` varchar(32) NOT NULL COMMENT 'auto 自动，manual手动',
+  `batch_time` int(11) NOT NULL COMMENT '间隔时间（单位:分钟）',
+  `status` varchar(32) NOT NULL COMMENT 'wait 等待， complete结束',
+  `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
+  `gmt_modify` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='批次表';
+
+-- 数据导出被取消选择。
+-- 导出  表 testdb.order_info 结构
+CREATE TABLE IF NOT EXISTS `order_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `order_no` varchar(100) NOT NULL COMMENT '订单号',
+  `batch_no` varchar(100) NOT NULL COMMENT '批次号',
+  `choose_num` varchar(20) DEFAULT NULL COMMENT '选择的数字',
+  `price` varchar(32) NOT NULL COMMENT '单注金额',
+  `num` int(11) NOT NULL COMMENT '投注数',
+  `order_amt` varchar(32) NOT NULL COMMENT '订单金额',
+  `user_no` bigint(20) NOT NULL COMMENT '用户编号',
+  `status` varchar(32) NOT NULL COMMENT 'wait 等待， complete结束',
+  `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
+  `gmt_modify` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单表';
+
+-- 数据导出被取消选择。
+-- 导出  表 testdb.trade_info 结构
+CREATE TABLE IF NOT EXISTS `trade_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `trade_no` varchar(100) NOT NULL COMMENT '交易号',
+  `winner_no` varchar(100) NOT NULL COMMENT '获胜编号',
+  `user_no` bigint(20) DEFAULT NULL COMMENT '用户编号',
+  `amt` varchar(32) NOT NULL COMMENT '金额',
+  `status` varchar(2) NOT NULL COMMENT 'wait 等待，processing处理中， success 成功, failed失败',
+  `order_no` varchar(32) DEFAULT NULL COMMENT '订单号',
+  `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
+  `gmt_modify` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='交易流水表';
+
+-- 数据导出被取消选择。
+-- 导出  表 testdb.user_info 结构
+CREATE TABLE IF NOT EXISTS `user_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `user_id` VARCHAR(100) NOT NULL,
+  `name` varchar(100) NOT NULL COMMENT '登录名',
+  `password` varchar(512) NOT NULL COMMENT '密码',
+  `state` varchar(1) NOT NULL COMMENT '0 正常， -1 非正常',
+  `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
+  `gmt_modify` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+-- 数据导出被取消选择。
+-- 导出  表 testdb.winner_info 结构
+CREATE TABLE IF NOT EXISTS `winner_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `winner_no` varchar(100) NOT NULL COMMENT '获胜编号',
+  `batch_no` varchar(100) NOT NULL COMMENT '批次号',
+  `user_no` bigint(20) DEFAULT NULL COMMENT '用户编号',
+  `amt` varchar(32) NOT NULL COMMENT '金额',
+  `status` varchar(2) NOT NULL COMMENT 'wait 等待，processing处理中， success 成功, failed失败',
+  `trade_no` varchar(32) DEFAULT NULL COMMENT '交易号',
+  `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
+  `gmt_modify` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='获奖表';

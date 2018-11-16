@@ -1,0 +1,310 @@
+package com.sh.guessgame.utils.common;
+
+public enum ErrorCode {
+    // 对外返回
+    SYSTEM_OUT_SUCCESS("SUCCESS", "Success", "Success"),
+    SYSTEM_OUT_FAIL("FAIL", "fail", "fail"),
+    SYSTEM_OUT_BUSY("SYSTEM_BUSY", "系统繁忙，请稍后再试", "系统繁忙，请稍后再试"),
+    SDK_VALID_SIGN_FAILED("SIGN_ERROR", "验签失败", "验签失败!"),
+    SDK_SIGN_TYPE_ERROR("SIGN_TYPE_ERROR", "签名类型错误", "签名类型错误"),
+    SDK_DATA_FORMAT_ERROR("DATA_FORMAT_ERROR", "业务参数不是Json格式", "业务参数不是Json格式"),
+    
+    
+    
+    SYSTEM_SUCCESS("10000", "Success", "Success"),
+    SYSTEM_BUSY("10001", "系统繁忙，请稍后再试", "系统繁忙，请稍后再试"),
+    
+    SYSTEM_OPERATOR_EXIST("10005", "系统运营账户已存在", "系统运营账户已存在"),
+    APP_ORDER_CREATE_FAILED("20001", "创建订单失败", "创建订单失败"),
+    APP_ORDER_CREATE_REQUESTPARAM_ERROR("20002", "公共参数异常", "公共参数异常"),
+    APP_ORDER_CREATE_REQUESTPARAMCONTENT_ERROR("20003", "业务参数异常", "业务参数异常"),
+    DB_ACCESS_ERROR("20004", "数据库访问错误", "数据库访问错误!"),
+    APP_ORDER_CREATE_ALREADY("20005", "订单已存在", "订单已存在"),
+    APP_REQUEST_SIGN_INVALID("20006", "客户端请求签名异常", "客户端请求签名异常!"),
+    APP_REQUEST_APPID_INVALID("20007", "app_id不存在", "app_id不存在!"),
+    APP_ORDER_AMOUNT_ERROR("20008", "金额不正确", "金额不正确"),
+    
+    APP_QUERY_ORDE_FAILED("20011", "查询订单失败", "查询订单失败!"),
+    APP_QUERY_ORDE_INVALID_ORDERNO("20012", "订单不存在", "订单不存在!"),
+    APP_QUERY_ORDE_REQUESTPARAMCONTENT_ERROR("20013", "查询订单业务参数异常", "查询订单业务参数异常"),
+    
+    APP_REFUND_FAILED("20021", "退款失败", "退款失败!"),
+    APP_REFUND_REQUESTPARAMCONTENT_ERROR("20022", "退款业务参数异常", "退款业务参数异常"),
+    APP_REFUND_ALREADY("20023", "该订单已退款", "该订单已退款"),
+    APP_REFUND_AMOUNT_OVER("20024", "退款金额超出付款金额", "退款金额超出付款金额"),
+    APP_REFUND_NOT_PAY("20025", "订单未支付", "订单未支付"),
+    APP_REFUND_MONEY_ERROR("20025", "退款金额非法", "退款金额非法,退款失败"),
+    
+    APP_ORDER_PAY_WAY_ERROR("20026", "支付方式错误", "支付方式错误"),
+    APP_ORDER_TRANS_TYPE_ERROR("20027", "交易类型错误", "交易类型错误"),
+    
+    APP_PAY_ORDER_TIMEOUT("20101", "订单已超时", "订单已超时!"),
+    APP_ORDER_PAY_SUCCESS_ALREADY("20102", "订单已支付", "订单已支付!"),
+    APP_ORDER_PAY_FAILED("20103", "订单已支付失败", "订单已支付失败!"),
+    APP_ORDER_IN_PAY_PROCESSING("20104", "订单支付处理中", "订单支付处理中!"),
+    APP_ORDER_PAY_CLOSED("20105", "订单已关闭", "订单已关闭!"),
+    APP_ORDER_AMOUNT_INVALID("20106", "参数金额和订单不匹配", "参数金额和订单不匹配!"),
+    
+    APP_WITHDRAW_FAILED("20041", "提现失败", "提现失败!"),
+    APP_WITHDRAW_CREATE_ORDER_FAILED("20041", "创建提现订单是失败", "创建提现订单是失败!"),
+    // 订单
+    OUT_TRADE_NO_QUERY_ERROR("20081", "外部订单号查询时商户号必填", "外部订单号查询时商户号必填"),
+    TRADE_TYPE_ERROR("20091", "交易方式错误", "交易方式错误"),
+    CURRENCY_TYPE_ERROR("20095", "币种错误或者系统不支持", "币种错误或者系统不支持"),
+    ORDER_REPEATE("20096", "订单已创建，不允许重复发起支付", "订单已创建，不允许重复发起支付"),
+    
+    // 商户
+    MERCHANT_NOT_EXIST("20100", "商户不存在", "商户不存在"),
+    MERCHANT_STATUS_ERROR("20101", "商户状态不正常", "商户状态不正常"),
+    MERCHANT_SIGN_OVER_DUE("20102", "商户签约到期", "商户签约到期"),
+    MERCHANT_ID_NOT_NULL("20103", "商户id不能为空", "商户id不能为空"),
+    MERCHANT_ADD_ERROR("20105", "商户添加失败", "商户添加失败"),
+    MERCHANT_NOT_REGISTERED("20106", "该手机号未被商户注册", "该手机号未被商户注册"),
+    
+    SEND_SMS_ERROR("30001", "发送短信验证码失败", "发送短信验证码失败!"),
+    SMS_CODE_TIMEOUT("30002", "短信验证码失效", "短信验证码失效"),
+    INTERFACE_SMSVALIDCODE_WRONG("30003", "短信验证码不正确", "短信验证码不正确!"),
+    SEND_SMS_TOO_MANY("30004", "每个手机号24小时内最多只能发送30条", "每个手机号24小时内最多只能发送30条"),
+    SEND_SMS_TOO_FAST("30005", "短信码发送过频，请稍后再试", "短信码发送过频，请稍后再试"),
+    
+    
+    CAN_NOT_REMOTE_SERVER_VISIT("30030", "系统参数配置不允许远程主机访问，请使用服务本地访问", "系统参数配置不允许远程主机访问，请使用服务本地访问"),
+    
+    SDK_CREATE_THIRDPAY_PARAM_FAILED("40001", "创建第三方支付请求参数失败", "创建第三方支付请求参数失败!"),
+    SDK_NOTIFY_ORDERNNO_INVALID("40011", "异步通知中的订单号无效", "异步通知中的订单号无效!"),
+    SDK_UPDATE_USER_EACCOUNT_FAILED("41001", "更新用户余额失败", "更新用户余额失败!"),
+    
+    SDK_CREATE_SQEUENCE_FAILED("42001", "创建交易流水失败", "创建交易流水失败!"),
+    SDK_SEARCH_SQEUENCE_FAILED("42002", "查询交易流水失败", "查询交易流水失败!"),
+    SDK_UPDATE_SQEUENCE_FAILED("42003", "更新交易流水失败", "更新交易流水失败!"),
+    TRADE_STATUS_NOT_NULL("42004", "交易状态不允许为空", "交易状态不允许为空"),
+    TRADE_STATUS_NOT_LEGAL("42005", "交易状态不正确", "交易状态不正确"),
+    TRADE_NOT_EXIST("42007", "交易记录不存在", "交易记录不存在"),
+    ORDER_NO_NOT_NULL("42008", "订单号不允许为空", "订单号不允许为空!"),
+    
+    // 订单支付状态
+    ORDER_IS_PROCESSING("42100", "订单支付中，不能重复支付", "订单支付中，不能重复支付"),
+    ORDER_IS_SUCCESS("42101", "订单支付成功，不能重复支付", "订单支付成功，不能重复支付"),
+    ORDER_IS_FAIL("42102", "订单已支付失败，不能重复支付", "订单已支付失败，不能重复支付"),
+    ORDER_IS_CLOSE("42103", "订单已关闭，不能进行支付", "订单已关闭，不能进行支付"),
+    ORDER_CREATE_FAIL("42105", "订单创建失败", "订单创建失败"),
+    
+    EACCOUNT_NOT_NULL("42200", "账号不允许为空", "电子账号不允许为空"),
+    EACCOUNT_NOT_EXIST("42201", "账户不存在", "账户不存在"),
+    EACCOUNT_NOT_NORMAL("42202", "账户不正常", "账户不正常"),
+    EACCOUNT_IS_FREEZED("42203", "账户冻结", "账户冻结"),
+    EACCOUNT_IS_CANCELL("42204", "账户已注销", "账户已注销"),
+    EACCOUNT_FREEZED_NOT_ROLL_OUT("42205", "账户半冻结，无法转出余额", "账户半冻结，无法转出余额"),
+    EACCOUNT_FREEZED_NOT_ROLL_IN("42206", "账户半冻结，无法转入余额", "账户半冻结，无法转入余额"),
+    
+    
+    SDK_VALID_THIRDPAY_FAILED("43002", "第三方支付结果与订单不匹配", "第三方支付结果与订单不匹配!"),
+    
+    IMAGE_SERVER_HOST_ADDRESS_NOT_EXIST("88001", "图片服务器不存在", "图片服务器不存在"), 
+    IMAGE_UPLOAD_ERROR("88002", "图片上传错误", "图片上传错误"),
+    FILE_UPLOAD_ERROR("88003", "文件上传错误", "文件上传错误"),
+    //内部业务错误码
+    EXEMPT_PWD_SWITCH_ERROR("95001", "免密支付开关状态错误", "免密支付开关状态错误"),
+    EXEMPT_PWD_AMOUNT_NOT_NULL("95002", "免密支付开启免密额度不能为空", "免密支付开启免密额度不能为空"),
+    EXEMPT_PWD_AMOUNT_ERROR("95003", "免密支付免密额度错误", "免密支付免密额度错误"),
+    
+    DEV_INVALID_REQUEST_FORMAT("96001", "请求格式非法", "无效请求,格式非法!"),
+    DEV_LACK_OF_REQUEST_PARAM("96002", "无效请求,请求缺少参数", "无效请求,请求缺少参数：%s!"),
+    DEV_INVALID_REQUEST_PARAM_FORMAT("96003", "请求参数格式无效", "无效请求,请求参数%s格式错误!"),
+    USER_ACCOUNT_STATE_INACTIVE("96004", "账户未激活", "账户未激活!"),
+    USER_ACCOUNT_STATE_FROZEN("96005", "账户已冻结", "账户已冻结!"),
+    USER_ACCOUNT_STATE_LOCKED("96006", "账户已被锁定,请联系管理员或等待自动解锁!", "账户已被锁定,请联系管理员或等待自动解锁!"),
+    USER_ACCOUNT_STATE_DESTROYED("96007", "账户已注销", "账户已注销!"),
+    USER_ACCOUNT_STATE_UNKNOWN("96008", "未知账户状态", "未知账户状态!"),
+    INTERFACE_NO_SUCH_DEVELOPER("96009", "该商户不存在", "该商户不存在"),
+    USER_REGISTER_FAIL("96010","用户注册失败,请稍后重试","用户注册失败,请稍后重试"),
+    NOT_LOGIN("96011", "用户未登录或session已过期,请重新登录", "登录已过期,请重新登录"),
+    USER_NOT_EXIST("96014","用户不存在","用户不存在"),
+    
+    
+    
+    BLENDING_ORDER_SEQ_STATE_NOT_ALLOW_BLENDING("96013", "订单流水状态不为等待支付", "订单流水状态不为等待支付"),
+    SUBINFO_NOT_FIND("96014", "未找到二级电子账户", "未找到二级电子账户"),
+    PAY_AMOUNT_ERROR("96015", "支付金额错误", "支付金额错误"),
+    BALANCE_AMOUNT_NOT_SUFFICIENT("96016", "现金余额不足", "现金余额不足"),
+    REDPACKET_AMOUNT_NOT_SUFFICIENT("96017", "红包余额不足", "红包余额不足"),
+    NOT_OPEN_EXEMPT_PWD("96018","该用户未开启免密支付","该用户未开启免密支付，请使用支付密码支付"),
+    PAY_AMOUNT_GREATE_THAN_EXEMPT_LIMIT("96019","支付金额大于免密额度","支付金额大于免密额度，请使用支付密码支付"),
+    TRANS_PASSWORD_ERROR_MAX("96020", "密码错误次数达到上限，账户已被锁定", "交易密码错误，您已经尝试%s次，账户被锁定!"),
+    TRANS_PASSWORD_ERROR("96021", "交易密码错误", "交易密码错误，您还有%s次尝试机会!"),
+    LOGIN_PASSWORD_ERROR_MAX("96022", "登录密码错误次数达到上限，账户已被锁定", "登录密码错误次数达到上限，账户已被锁定,请联系管理员或等待自动解锁!"),
+    LOGIN_PASSWORD_ERROR("96023", "登录密码错误", "登录密码错误，您还有%s次尝试机会!"),
+	TRADE_TIMEOUT("96024", "交易超时", "交易超时"),
+    BALANCE_PAY_ERROR("96025", "余额扣款失败", "余额扣款失败"),
+    RED_PACKET_PAY_ERROR("96026", "红包扣款失败", "红包扣款失败"),
+    PHONE_NUM_FORMAT_NOT_CORRECT("96027", "手机号码格式不正确", "手机号码格式不正确"),
+    NEWPASS_NOTEQUALS_NEWPASSCONFIRM("96028", "两次新密码不一致!", "两次新密码不一致!"),
+    NEWPASS_EQUALS_OLDPASS("96029", "新密码不能与老密码相同", "新密码不能与老密码相同!"),
+    INTERFACE_OLDPASSWORD_WRONG("96030", "旧密码不正确", "旧密码不正确!"),
+    BANK_CARD_UNSUPPORTED("96031", "该银行卡不支持", "该银行卡不支持"),
+    VERIFY_CARD_FAILED("96032", "银行卡身份验证错误", "银行卡身份验证错误"),
+    CARD_NUMBER_NOT_EXIST("96033", "卡号（或折号）不存在。", "卡号（或折号）不存在。"),
+    BANK_CARD_OWEN_SUPPORT("96034", "仅支持本人银行卡", "仅支持本人银行卡!"),
+    ACCESS_TOKEN_ERROR("96035", "ACCESS TOKEN错误或过期", "操作超时，请重新操作"),
+    IDENTITY_CARD_EXIST("96036", "身份证号已存在！", "身份证号已存在！"),
+    BANK_CARD_BEEN_BOUNDED("96037", "银行卡已绑定", "银行卡已绑定"),
+    EACCOUNT_INFO_NOT_FIND("96038", "未找到一级电子账户", "未找到一级电子账户"),
+    UPDATE_USERINFO_FAILED("96039", "更新用户信息失败", "更新用户信息失败"),
+    UPDATE_EACCOUNTINFO_FAILED("96040", "更新一级电子账户信息失败", "更新一级电子账户信息失败"),
+    CREATE_OR_UPDATE_BANK_CARD_FAILED("96041", "绑定银行卡失败", "绑定银行卡失败"),
+	ORDER_STATE_NOT_ALLOW_BLENDING("96042", "订单状态不可支付", "订单状态不可支付"),
+	BANK_CARD_NOT_BOUNDED("96060", "未绑定银行卡", "未绑定银行卡"),
+	BANK_CARD_IS_NOT_SELF("96061", "用户未绑定该银行卡", "用户未绑定该银行卡"),
+	
+	IDENTITY_CARD_ILLEGAL("96080", "身份证号错误！", "身份证号错误！"),
+	REAL_NAME_CHECK_ERROR("96081", "身份证实名认证错误", "身份证实名认证错误"),
+	TRADE_PWD_ILLEGAL("96083", "交易密码为6位纯数字！", "交易密码为6位纯数字！"),
+	
+	
+	USER_NAME_NOT_NULL("96300","用户名不允许为空","用户名不允许为空"),
+    USER_PASSSORD_NOT_NULL("96301","用户登录密码不允许为空","用户登录密码不允许为空"),
+    USER_NAME_OR_PASSWORD_NOT_RIGHT("96302","用户名或者密码错误","用户名或者密码错误"),
+    
+    OLD_PASSSORD_NOT_RIGHT("96303","旧密码不正确","旧密码不正确"),
+    NEW_PASSSORD_NOT_NULL("96304","新密码不允许为空","新密码不允许为空"),
+    UPDATE_NUM_OVER_DAY_LIMIT("96305","每日更换密码错误次数超过6次，请明日重试","每日更换密码错误次数超过6次，请明日重试"),
+    OLD_PASSSORD_NOT_NULL("96307","旧密码允许为空","旧密码允许为空"),
+    UPDATE_PASSSORD_ERROR("96308","更改密码错误","更改密码错误"),
+    LOGIN_TOKEN_NOT_NULL("96309","登录状态token必填", "登录状态token必填"),
+    LOGIN_STATUS_ERROR("RE_LOGIN","登录状态过期或者无效，请重新登录","登录状态过期或者无效，请重新登录"),
+    
+	
+    OUT_TRADE_NO_NOT_NULL("97003", "商户订单号不允许为空", "商户订单号不允许为空"),
+	// 时间
+	EXPIRT_TIME_ERROR("96100", "超时时间设置错误，取值范围【1,480】", "超时时间设置错误，取值范围【1,480】"),
+	
+	
+	// 微信充值start
+	WX_APPID_NOT_NULL("97000", "微信公众账号ID不允许为空", "微信公众账号ID不允许为空"),
+	WX_MCHID_NOT_NULL("97001", "微信商户号不允许为空", "微信商户号不允许为空"),
+	WX_BODY_NOT_NULL("97002", "商品描述不允许为空", "商品描述不允许为空"),
+    WX_OUT_TRADE_NO_NOT_NULL("97003", "外部订单号不允许为空", "外部订单号不允许为空"),
+	WX_TOTAL_FEE_NOT_NULL("97004", "总金额不允许为空", "总金额不允许为空"),
+	WX_SPBILL_CREATE_IP_NOT_NULL("97005", "用户端IP不允许为空", "用户端IP不允许为空"),
+	WX_NOTIFY_URL_NOT_NULL("97006", "通知地址不允许为空", "通知地址不允许为空"),
+	WX_TRADE_TYPE_NOT_NULL("97007", "交易类型不允许为空", "交易类型不允许为空"),
+	WX_SCENE_INFO_MAX_LENGTH_ILLEGAL("97008", "场景信息最大长度不允许超过256位", "场景信息最大长度不允许超过256位"), 
+	WX_OUT_REFUND_NO_NOT_NULL("97100", "退款编号不允许为空", "退款编号不允许为空"),
+	WX_REFUND_AMT_ILLEGAL("97101", "退款金额不允许为0", "退款金额不允许为0"),
+	WX_GET_ACCESS_TOKEN_ERROR("97102", "获取access_token失败", "获取access_token失败"),
+	WX_VALID_SIGN_ERROR("97103", "微信返回验签失败", "微信返回验签失败"),
+	WX_PAYMENT_NOTIFY_ERROR("97104", "微信支付结果通知错误", "微信支付结果通知错误"),
+	WX_REFUND_NOTIFY_ERROR("97105", "微信退款结果通知错误", "微信退款结果通知错误"),
+	WX_MIRCO_PAY_FAILED("97108", "微信刷卡支付失败", "微信刷卡支付失败"),
+	
+	// 微信支付 end
+	ALI_PAY_NOTIFY_SIGN_CHECK_FAIL("97400", "支付宝支付结果通知验签失败", "支付宝支付结果通知验签失败"),
+	ALI_PAY_FACE_TO_FACE_PAY_FAIL("97401", "支付宝当面支付失败", "支付宝当面支付失败"),
+	
+	
+	// 充值
+	RECHARGE_TYPE_NOT_NULL("98000", "充值方式不允许为空", "充值方式不允许为空"),
+	RECHARGE_TYPE_NOT_ILLEGAL("98001", "请选择正确的充值方式", "请选择正确的充值方式"),
+	RECHARGE_AMOUNT_NOT_NULL("98002", "充值金额不允许为0", "充值金额不允许为0"),
+	RECHARGE_BANKCARD_NOT_NULL("98003", "银行卡充值付款账号不允许为空", "银行卡充值付款账号不允许为空"),
+	RECHARGE_BANKCARD_NOT_ILLEGAL("98003", "银行卡充值付款账号未绑定", "银行卡充值付款账号未绑定"),
+	
+	//补充
+	SEND_CARD_ERROR("99000", "银行卡绑定失败", "银行卡绑定失败"),
+	IDENTITY_NAME_CHECK_ERROR("99001", "非本人银行卡不能绑定", "非本人银行卡不能绑定"),
+	SEND_CHECK_ERROR("99002", "银行卡验证失败", "银行卡验证失败"),
+	MOBILE_IS_REGISTERED("99003", "手机号已注册", "手机号已注册"),
+    
+	
+	APPID_NOT_ILLEGAL("98100", "请求渠道未经过认证，请联系客服", "请求渠道未经过认证，请联系客服"),
+
+	CONFIG_NOT_ALLOW_CHANGE_ON_RUNNING("98200", "系统运营状态不允许更改支付渠道配置参数，请关闭渠道运营开关后修改", "系统运营状态不允许更改支付渠道配置参数，请关闭渠道运营开关后修改"),
+	CONFIG_NOT_ALLOW_CHANGE_ON_REMOTE_HOST("98201", "支付渠道参数配置不允许远程维护，请在本地主机上维护", "支付渠道参数配置不允许远程维护，请在本地主机上维护"),
+	
+	WECHAT_GZH_CONFIG_ERROR("98210", "微信公众号支付参数配置错误", "微信公众号支付参数配置错误"),
+	WECHAT_H5_CONFIG_ERROR("98211", "微信h5支付参数配置错误", "微信h5支付参数配置错误"),
+	ALI_PAY_CONFIG_ERROR("98212", "支付宝支付参数配置错误", "支付宝支付参数配置错误"),
+	
+	WECHAT_GZH_CHANNEL_CLOSED("98213", "微信公众号支付渠道关闭", "微信公众号支付渠道关闭"),
+    WECHAT_H5_CHANNEL_CLOSED("98214", "微信h5支付渠道关闭", "微信h5支付渠道关闭"),
+    ALI_PAY_CHANNEL_CLOSED("98215", "支付宝支付渠道关闭,请选择其他支付方式", "支付宝支付渠道关闭,请选择其他支付方式"),
+	
+	SYSTEM_DATA_DECRYPT_ERROR("99998", "系统解密失败", "系统解密失败"),
+	SYSTEM_DATA_ENCRYPT_ERROR("99999", "系统加密失败", "系统加密失败"),
+	// 对外接口返回
+	ORDER_NOT_EXIST("ORDER_NOT_EXIST", "订单信息不存在", "订单信息不存在"),
+	ORDER_NOT_PAY("ORDER_NOT_PAY", "订单未支付", "订单未支付"),
+	REFUND_SUBMITED("REFUND_SUBMITED", "退款申请重复提交", "退款申请重复提交"),
+	REFUND_AMT_OVER_ORDER_AMT("REFUND_SUBMITED", "退款金额超过订单总额", "退款金额超过订单总额"),
+	ORDER_EXCEEDS_FUND_PERIOD("ORDER_EXCEEDS_FUND_PERIOD", "订单超过退款期", "订单超过退款期"),
+	TOTAL_REFUND_AMT_OVER_LIMIT("TOTAL_REFUND_AMT_OVER_LIMIT", "累计退款金额超过订单总额", "累计退款金额超过订单总额"),
+	REFUND_NUM_OVER_LIMIT("REFUND_NUM_OVER_LIMIT", "退款次数超过限制", "退款次数超过限制")
+	;
+
+//	9000	订单支付成功
+//	8000	正在处理中，支付结果未知（有可能已经支付成功），请查询商户订单列表中订单的支付状态
+//	4000	订单支付失败
+//	5000	重复请求
+//	6001	用户中途取消
+//	6002	网络连接出错
+//	6004	支付结果未知（有可能已经支付成功），请查询商户订单列表中订单的支付状态
+//	其它	其它支付错误
+	  //错误码
+    private String code;
+    //系统提示信息
+    private String msg;
+    //用户展示信息
+    private String showmsg;
+
+    public String getCode() {
+        return code;
+    }
+
+    public final void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+
+    public String getShowmsg() {
+        return showmsg;
+    }
+
+
+    public void setShowmsg(String showmsg) {
+        this.showmsg = showmsg;
+    }
+
+
+    private ErrorCode(String code, String msg, String showmsg) {
+        this.code = code;
+        this.msg = msg;
+        this.showmsg = showmsg;
+    }
+
+
+    public static ErrorCode getErrorCode(String errcode) {
+        for (ErrorCode item : values()) {
+            if (item.getCode().equalsIgnoreCase(errcode)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Enum#toString()
+     */
+    public String toString() {
+        return this.code + "(" + this.msg + "," + this.showmsg + ")";
+    }
+
+}

@@ -1,0 +1,126 @@
+package com.aemoney.app.common.utils;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SdkConfig {
+	@Value("${SESSION_TIME_OUT}")
+	private String sessionTimeOut;
+	@Value("${sdk.privatekey}")
+	private String privatekey;
+	@Value("${sdk.publickey}")
+	private String publickey;
+	@Value("${sdk.alipay.appId}")
+	private String alipayAppID;
+	@Value("${sdk.wxpay.appId}")
+	private String wxpayAppId;
+	@Value("${alipay.publickey}")
+	private String aliPublickey;
+	@Value("${wxpay.publickey}")
+	private String wxPublickey;
+	@Value("${sdk.alipay.account}")
+	private String sdkAliAccount;
+	@Value("${sdk.wxpay.account}")
+	private String sdkWXAccount;
+	@Value("${sdk.bankcard.account}")
+	private String sdkBankCardAccount;
+	@Value("${sdk.alipay.publickey}")
+	private String alipayPublickey;
+	@Value("${sdk.alipay.privatekey}")
+	private String alipayPrivatekey;
+	@Value("${sdk.pay.url}")
+	private String sdkPayUrl;
+	
+	@PostConstruct
+	public void init(){
+		if(alipayPrivatekey!=null){
+			alipayPrivatekey = new String(Base64.decode(alipayPrivatekey));
+		}
+	}
+	
+	public String getSessionTimeOut() {
+		return sessionTimeOut;
+	}
+	public void setSessionTimeOut(String sessionTimeOut) {
+		this.sessionTimeOut = sessionTimeOut;
+	}
+	public String getPrivatekey() {
+		return privatekey;
+	}
+	public void setPrivatekey(String privatekey) {
+		this.privatekey = privatekey;
+	}
+	public String getPublickey() {
+		return publickey;
+	}
+	public void setPublickey(String publickey) {
+		this.publickey = publickey;
+	}
+	public String getAlipayAppID() {
+		return alipayAppID;
+	}
+	public void setAlipayAppID(String alipayAppID) {
+		this.alipayAppID = alipayAppID;
+	}
+	public String getWxpayAppId() {
+		return wxpayAppId;
+	}
+	public void setWxpayAppId(String wxpayAppId) {
+		this.wxpayAppId = wxpayAppId;
+	}
+	public String getAliPublickey() {
+		return aliPublickey;
+	}
+	public void setAliPublickey(String aliPublickey) {
+		this.aliPublickey = aliPublickey;
+	}
+	public String getWxPublickey() {
+		return wxPublickey;
+	}
+	public void setWxPublickey(String wxPublickey) {
+		this.wxPublickey = wxPublickey;
+	}
+	public String getSdkAliAccount() {
+		return sdkAliAccount;
+	}
+	public void setSdkAliAccount(String sdkAliAccount) {
+		this.sdkAliAccount = sdkAliAccount;
+	}
+	public String getSdkWXAccount() {
+		return sdkWXAccount;
+	}
+	public void setSdkWXAccount(String sdkWXAccount) {
+		this.sdkWXAccount = sdkWXAccount;
+	}
+	public String getSdkBankCardAccount() {
+		return sdkBankCardAccount;
+	}
+	public void setSdkBankCardAccount(String sdkBankCardAccount) {
+		this.sdkBankCardAccount = sdkBankCardAccount;
+	}
+	public String getAlipayPublickey() {
+		return alipayPublickey;
+	}
+	public void setAlipayPublickey(String alipayPublickey) {
+		this.alipayPublickey = alipayPublickey;
+	}
+	public String getAlipayPrivatekey() {
+		return alipayPrivatekey;
+	}
+	public void setAlipayPrivatekey(String alipayPrivatekey) {
+		this.alipayPrivatekey = alipayPrivatekey;
+	}
+
+	public String getSdkPayUrl() {
+		return sdkPayUrl;
+	}
+
+	public void setSdkPayUrl(String sdkPayUrl) {
+		this.sdkPayUrl = sdkPayUrl;
+	}
+	
+	
+}

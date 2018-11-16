@@ -1,0 +1,77 @@
+/**
+ * 
+ */
+package com.aemoney.app.common.utils;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import com.aemoney.app.common.config.AemoneySdkConfig;
+import com.aemoney.app.common.rsautil.RSASignature;
+import com.google.gson.Gson;
+
+/**
+ * @Description: 返回结果
+ * @author Administrator
+ * @date:2017年12月19日 下午5:48:32
+ * @Version: V1.0
+ */
+public class Result extends LinkedHashMap<String, Object>{
+	private static final long serialVersionUID = 1L;
+	public static String RETCODE = "retCode";
+	public static String RETMSG = "retMsg";
+	private AemoneySdkConfig aemoenySdkConfig;
+	
+	public Result(String retCode, String retMsg){
+		super();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put(RETCODE, retCode);
+		map.put(RETMSG, retMsg);
+		
+		Gson gson = new Gson();
+        String signstr=RSASignature.sign(gson.toJson(map).toString(),AemoneySdkConfig.SERVER_PRIVATE_KEY);  //签名 (安全验证)
+        put("bizContent", gson.toJson(map).toString());
+        put("sign", signstr);
+        put("signtype", "RSA");
+	}
+	public static Result getSuccessResult() {
+		return new Result(ErrorCode.SYSTEM_SUCCESS.getCode(), ErrorCode.SYSTEM_SUCCESS.getShowmsg());
+	}
+	
+	public static Result getBusyResult() {
+		return new Result(ErrorCode.SYSTEM_BUSY.getCode(), ErrorCode.SYSTEM_BUSY.getShowmsg());
+	}
+	
+	public Result(Map<String, Object> map) {
+	    Gson gson = new Gson();
+//	    map.put(RETCODE, ConstantType.ResultType.SYSTEM_SUCCESS.getRetCode());
+//	    map.put(RETMSG, ConstantType.ResultType.SYSTEM_SUCCESS.getRetMsg());
+        String signstr=RSASignature.sign(gson.toJson(map).toString(),AemoneySdkConfig.SERVER_PRIVATE_KEY);  //签名 (安全验证)
+        put("bizContent", gson.toJson(map).toString());
+        put("sign", signstr);
+        put("signtype", "RSA");
+	}
+	
+	   public Result(Object object) {
+	        Gson gson = new Gson();
+	        String signstr=RSASignature.sign(gson.toJson(object).toString(),AemoneySdkConfig.SERVER_PRIVATE_KEY);  //签名 (安全验证)
+	        put("bizContent", gson.toJson(object).toString());
+	        put("sign", signstr);
+	        put("signtype", "RSA");
+	    }
+    public AemoneySdkConfig getAemoenySdkConfig() {
+        return aemoenySdkConfig;
+    }
+    public void setAemoenySdkConfig(AemoneySdkConfig aemoenySdkConfig) {
+        this.aemoenySdkConfig = aemoenySdkConfig;
+    }
+	
+    public static Map<String, Object> getSuccessMap(){
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put(RETCODE, ConstantType.ResultType.SYSTEM_SUCCESS.getRetCode());
+        map.put(RETMSG, ConstantType.ResultType.SYSTEM_SUCCESS.getRetMsg());
+        
+        return map;
+    }
+}

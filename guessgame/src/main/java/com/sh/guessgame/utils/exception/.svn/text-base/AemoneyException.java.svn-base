@@ -1,0 +1,53 @@
+package com.aemoney.app.common.exception;
+
+import com.aemoney.app.common.utils.ErrorCode;
+
+public class AemoneyException extends RuntimeException{
+
+
+	private static final long serialVersionUID = -7899489896265089938L;
+	protected String errorCode;
+
+	public AemoneyException() {
+	}
+
+	public AemoneyException(String message) {
+		super(message);
+	}
+
+	public AemoneyException(Throwable cause) {
+		super(cause);
+	}
+
+	public AemoneyException(String errorCode, String message) {
+		super(message);
+		this.errorCode = errorCode;
+	}
+
+	public AemoneyException(Throwable cause, String errorCode) {
+		super(cause);
+		this.errorCode = errorCode;
+	}
+	public AemoneyException(String errorCode, String message, String... args ) {
+        super(String.format(message, args));
+        this.errorCode = errorCode;
+    }
+	
+
+	public AemoneyException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	public AemoneyException(String message, Throwable cause, String errorCode) {
+		super(message, cause);
+		this.errorCode = errorCode;
+	}
+	public AemoneyException(ErrorCode error) {
+		super(error.getMsg());
+		this.errorCode=error.getCode();
+	}
+	public String getErrorCode() {
+		return this.errorCode;
+	}
+
+}
